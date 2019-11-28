@@ -35,7 +35,7 @@
 
     <service name="WSDLService">
         <port name="FilterPort" binding="tns:FilterBinding">
-            <soap:address location="http://192.168.33.10/data4/dials_activity/public/server"/>
+            <soap:address location="http://ti-api.esntechnologies.com/server"/>
         </port>
     </service>
 </definitions>

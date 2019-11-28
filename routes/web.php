@@ -1,5 +1,9 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin,x-xsrf-token, Authorization');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +38,7 @@ Route::any('server', function () {
         }
     }
 
-    $server = new SoapServer( "http://192.168.33.10/data4/dials_activity/public/dialsactivity.wsdl" );
+    $server = new \SoapServer( "http://ti-api.esntechnologies.com/dialsactivity.wsdl" );
     $server->addFunction( "login" );
     $server->handle();
 });
@@ -43,8 +47,8 @@ Route::get('client', function() {
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-    $client = new \SoapClient("http://192.168.33.10/data4/dials_activity/public/dialsactivity.wsdl", array('cache_wsdl' => WSDL_CACHE_NONE));
-    return $client->login('satya@test.com', 'satya@test.com'); // call login() from .wsdl
+    $client = new \SoapClient("http://ti-api.esntechnologies.com/dialsactivity.wsdl", array('cache_wsdl' => WSDL_CACHE_NONE));
+    return $client->login('userb@test.com', 'userb@test.com'); // call login() from .wsdl
 });
 
 
